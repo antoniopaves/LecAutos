@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'src')));
 
 app.get('/', (req, res) => {
-    res.render('login');
+    res.redirect('autos');
 });
 
 app.use('/auth', authRouter);
