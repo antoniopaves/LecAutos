@@ -1,0 +1,41 @@
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+        <h2 class="text-center mb-4">Iniciar sesión</h2>
+
+        <form id="loginForm">
+
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo</label>
+                <input
+                    type="email"
+                    id="correo"
+                    class="form-control"
+                    placeholder="Ingresa tu correo"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Ingresa tu contraseña"
+                    required
+                >
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">
+                    Entrar
+                </button>
+            </div>
+
+        </form>
+
+        <p id="mensaje" class="text-center mt-3 text-danger"></p>
+    </div>
+</div>
+
+<script src="/public/js/login.js"></script>
