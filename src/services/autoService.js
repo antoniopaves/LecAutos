@@ -9,6 +9,16 @@ export default class autoService{
         const autos = await this.knex.select('*').from('auto')
         return autos
     }
+
+    async obtenerAutoNombre(nombre){
+    const auto = await this.knex
+        .select('*')
+        .from('auto')
+        .where('NOMBRE_AUTO', 'like', `%${nombre}%`)
+        .first();
+
+        return auto;
+    }
     
 }
 
