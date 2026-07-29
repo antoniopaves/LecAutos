@@ -15,6 +15,7 @@ export default class autoService{
         .select('*')
         .from('auto')
         .where('NOMBRE_AUTO', 'like', `%${nombre}%`)
+        .orWhere('MARCA_AUTO', 'like', `${nombre}%`)
         .first();
 
         return auto;
