@@ -83,5 +83,17 @@ router.get(
     autoController.eliminarAuto
 );
 
+router.get(
+    "/cotizar/:id",
+    verificarSesion,
+    autoController.formCotizar
+);
+
+
+router.post(
+    "/comprar",
+    verificarSesion,
+    autoController.registrarVenta
+);
 
 export default router;

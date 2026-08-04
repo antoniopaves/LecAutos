@@ -52,7 +52,6 @@ export default class autoService {
 
                 NOMBRE_AUTO: auto.nombre,
                 MARCA_AUTO: auto.marca,
-                MODELO_AUTO: auto.modelo,
                 ANIO_AUTO: auto.anio,
                 PRECIO_AUTO: auto.precio,
                 ESTADO_AUTO: auto.estado,
@@ -74,7 +73,6 @@ export default class autoService {
 
                 NOMBRE_AUTO: auto.nombre,
                 MARCA_AUTO: auto.marca,
-                MODELO_AUTO: auto.modelo,
                 ANIO_AUTO: auto.anio,
                 PRECIO_AUTO: auto.precio,
                 ESTADO_AUTO: auto.estado,
@@ -99,5 +97,25 @@ export default class autoService {
 
     }
 
+    async registrarVenta(venta){
+
+
+    const resultado = await this.knex("venta")
+    .insert({
+
+        ID_USUARIO: venta.idUsuario,
+
+        ID_AUTO: venta.idAuto,
+
+        PRECIOTOTAL_VENTA: venta.precioTotal,
+
+        IVA_VENTA: venta.iva
+
+    });
+
+
+    return resultado;
+
+}
 
 }

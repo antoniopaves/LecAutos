@@ -1,0 +1,108 @@
+<div class="container mt-4">
+
+
+<h2>
+    Cotizar {{auto.NOMBRE_AUTO}}
+</h2>
+
+
+
+<div class="card shadow">
+
+
+<div class="card-body">
+
+
+<h4>
+{{auto.MARCA_AUTO}}
+{{auto.NOMBRE_AUTO}}
+</h4>
+
+
+<p>
+Precio:
+<strong>
+${{auto.PRECIO_AUTO}}
+</strong>
+</p>
+
+
+
+<form action="/autos/comprar" method="POST">
+
+
+<input 
+type="hidden"
+name="idAuto"
+value="{{auto.ID_AUTO}}">
+
+
+
+<div class="mb-3">
+
+<label class="form-label">
+Cantidad
+</label>
+
+<input 
+class="form-control"
+type="number"
+name="cantidad"
+value="1"
+min="1">
+
+</div>
+
+
+
+<div class="mb-3">
+
+<label class="form-label">
+Método de pago
+</label>
+
+
+<select 
+class="form-select"
+name="metodo">
+
+
+<option>
+Tarjeta
+</option>
+
+
+<option>
+Transferencia
+</option>
+
+
+<option>
+Crédito
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+<button class="btn btn-success">
+
+Confirmar compra
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+
+</div>

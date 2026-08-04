@@ -142,6 +142,93 @@ class AutoController {
 
     }
 
+    async formCotizar(req,res){
+
+    const {id} = req.params;
+
+
+    const auto = await Service.obtenerAutoId(id);
+
+
+    res.render("autos/cotizar",{
+
+        auto,
+        usuario:req.session.usuario
+
+    });
+
+}
+
+async formCotizar(req,res){
+
+    const {id} = req.params;
+
+    const auto = await Service.obtenerAutoId(id);
+
+
+    res.render("autos/cotizar",{
+        auto,
+        usuario:req.session.usuario
+    });
+
+}
+
+
+async registrarVenta(req,res){
+
+    try {
+
+        const {
+            idAuto
+        } = req.body;
+
+
+        const auto = await Service.obtenerAutoId(idAuto);
+
+
+        const precio = auto.PRECIO_AUTO;
+
+
+        const iva = precio * 0.19;
+
+
+        const total = precio + iva;
+
+
+
+        await Service.registrarVenta({
+
+            idUsuario:req.session.usuario.id,
+
+            idAuto:idAuto,
+
+            precioTotal:total,
+
+            iva:iva
+
+        });
+
+
+
+        res.render("autos/confirmacion",{
+
+            usuario:req.session.usuario
+
+        });
+
+
+
+    } catch(error){
+
+        console.log(error);
+
+        res.status(500)
+        .send("Error registrando venta");
+
+    }
+
+}
+
 }
 
 export default new AutoController();
