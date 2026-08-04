@@ -18,7 +18,6 @@ export default class AuthService {
             })
             .first();
 
-            console.log(usuario)
 
         return usuario;
     }

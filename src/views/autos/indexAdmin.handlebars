@@ -1,83 +1,148 @@
-<div class="container mt-5">
+<div class="container mt-4">
 
-    <div class="card shadow">
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-            <h3 class="mb-0">🚗 Lista de Autos</h3>
+        <h2>
+            Panel Administrador
+        </h2>
 
-            <a href="/autos/nuevo" class="btn btn-success">
-                + Agregar Auto
+        <div>
+            <span class="me-3">
+                Bienvenido {{usuario.nombre}}
+            </span>
+
+            <a href="/auth/logout" class="btn btn-danger">
+                Cerrar sesión
             </a>
         </div>
 
+    </div>
+
+
+    <div class="card shadow">
+
+        <div class="card-header bg-dark text-white d-flex justify-content-between">
+
+            <h5 class="mb-0">
+                Gestión de vehículos
+            </h5>
+
+            <a href="/autos/nuevo" class="btn btn-success btn-sm">
+                + Nuevo vehículo
+            </a>
+
+        </div>
+
+
         <div class="card-body">
 
-            <div class="table-responsive">
 
-                <table class="table table-striped table-hover align-middle">
+            <table class="table table-hover table-bordered">
 
-                    <thead class="table-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Estado</th>
-                            <th>Marca</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
+                <thead class="table-dark">
 
-                    <tbody>
+                    <tr>
 
-                        {{#each autos}}
-                        <tr>
+                        <th>ID</th>
+                        <th>Imagen</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>
+                        <th>Año</th>
+                        <th>Precio</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
 
-                            <td>{{ID_AUTO}}</td>
+                    </tr>
 
-                            <td>{{NOMBRE_AUTO}}</td>
+                </thead>
 
-                            <td>
-                                {{#if ESTADO_AUTO}}
-                                    <span class="badge bg-success">
-                                        Disponible
-                                    </span>
-                                {{else}}
-                                    <span class="badge bg-danger">
-                                        No disponible
-                                    </span>
-                                {{/if}}
-                            </td>
 
-                            <td>{{MARCA_AUTO}}</td>
+                <tbody>
 
-                            <td>${{PRECIO_AUTO}}</td>
+                    {{#each autos}}
 
-                            <td>{{CANTIDAD_AUTO}}</td>
+                    <tr>
 
-                            <td>
-                                <a href="/autos/editar/{{ID_AUTO}}" class="btn btn-warning btn-sm">
-                                    Editar
-                                </a>
+                        <td>
+                            {{this.ID_AUTO}}
+                        </td>
 
-                                <a href="/autos/eliminar/{{ID_AUTO}}"
-                                   class="btn btn-danger btn-sm"
-                                   onclick="return confirm('¿Eliminar este auto?')">
-                                    Eliminar
-                                </a>
-                            </td>
 
-                        </tr>
-                        {{/each}}
+                        <td>
 
-                    </tbody>
+                            <img 
+                            src="/img/{{this.IMAGEN}}"
+                            width="100"
+                            class="rounded">
 
-                </table>
+                        </td>
 
-            </div>
+
+                        <td>
+                            {{this.MARCA}}
+                        </td>
+
+
+                        <td>
+                            {{this.MODELO}}
+                        </td>
+
+
+                        <td>
+                            {{this.ANIO}}
+                        </td>
+
+
+                        <td>
+                            ${{this.PRECIO}}
+                        </td>
+
+
+                        <td>
+
+                            {{this.ESTADO}}
+
+                        </td>
+
+
+                        <td>
+
+                            <a 
+                            href="/autos/editar/{{this.ID_AUTO}}"
+                            class="btn btn-warning btn-sm">
+
+                                Editar
+
+                            </a>
+
+
+                            <a 
+                            href="/autos/eliminar/{{this.ID_AUTO}}"
+                            class="btn btn-danger btn-sm"
+                            onclick="return confirm('¿Eliminar vehículo?')">
+
+                                Eliminar
+
+                            </a>
+
+
+                        </td>
+
+
+                    </tr>
+
+                    {{/each}}
+
+
+                </tbody>
+
+
+            </table>
+
 
         </div>
 
     </div>
+
 
 </div>
