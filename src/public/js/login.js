@@ -1,11 +1,14 @@
 const form = document.getElementById("loginForm");
 
+
 form.addEventListener("submit", async (e)=>{
 
     e.preventDefault();
 
+
     const correo = document.getElementById("correo").value;
     const password = document.getElementById("password").value;
+
 
     const respuesta = await fetch("/auth/login",{
 
@@ -27,13 +30,9 @@ form.addEventListener("submit", async (e)=>{
     if(data.ok){
 
         document.getElementById("mensaje").innerHTML="Bienvenido";
-
-        window.location="/autos";
+        window.location = data.redirect;
 
     }else{
-
-        document.getElementById("mensaje").innerHTML=data.mensaje;
-
+        document.getElementById("mensaje").innerHTML = data.mensaje;
     }
-
 });

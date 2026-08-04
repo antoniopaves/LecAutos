@@ -118,4 +118,33 @@ export default class autoService {
 
 }
 
+async obtenerVentas(){
+
+    const ventas = await this.knex
+        .select(
+            'venta.ID_VENTA',
+            'venta.PRECIOTOTAL_VENTA',
+            'venta.IVA_VENTA',
+            'usuario.NOMBRE_USUARIO',
+            'auto.MARCA_AUTO',
+            'auto.NOMBRE_AUTO',
+            'auto.ANIO_AUTO'
+        )
+        .from('venta')
+        .join(
+            'usuario',
+            'venta.ID_USUARIO',
+            'usuario.ID_USUARIO'
+        )
+        .join(
+            'auto',
+            'venta.ID_AUTO',
+            'auto.ID_AUTO'
+        );
+
+
+    return ventas;
+
+}
+
 }

@@ -1,0 +1,49 @@
+<div class="container mt-4">
+
+    <h2>
+        Ventas del sistema
+    </h2>
+
+
+    <table class="table table-bordered">
+
+        <thead class="table-dark">
+
+            <tr>
+                <th>ID Venta</th>
+                <th>Cliente</th>
+                <th>Total</th>
+            </tr>
+
+        </thead>
+
+
+        <tbody>
+
+            {{#each ventas}}
+
+            <tr>
+
+                <td>
+                    {{this.ID_VENTA}}
+                </td>
+
+
+                <td>
+                    {{this.NOMBRE_USUARIO}}
+                </td>
+
+
+                <td>
+                    ${{this.PRECIOTOTAL_VENTA}}
+                </td>
+
+            </tr>
+
+            {{/each}}
+
+        </tbody>
+
+    </table>
+
+</div>

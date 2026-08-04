@@ -17,7 +17,6 @@ export const login = async (req, res) => {
             });
         }
 
-        // Guardar la sesión
         req.session.usuario = {
             id: user.ID_USUARIO,
             nombre: user.NOMBRE_USUARIO,

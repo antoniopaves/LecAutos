@@ -5,7 +5,6 @@ const router = Router();
 
 router.get("/", (req, res) => {
 
-    // Si ya inició sesión, redirigir según el rol
     if (req.session.usuario) {
 
         if (req.session.usuario.rol === "admin") {

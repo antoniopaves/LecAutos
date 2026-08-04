@@ -7,13 +7,16 @@ class AutoController {
 
     async obtenerAutos(req, res) {
 
-        const autos = await Service.obtenerAutos();
+    const autos = await Service.obtenerAutos();
 
-        res.render("autos/index", {
-            autos,
-            usuario: req.session.usuario
-        });
-    }
+    console.log("USUARIO EN AUTOS:", req.session.usuario);
+
+    res.render("autos/index", {
+        autos,
+        usuario: req.session.usuario
+    });
+
+}
 
     async obtenerAutosAdmin(req, res) {
 
@@ -226,6 +229,20 @@ async registrarVenta(req,res){
         .send("Error registrando venta");
 
     }
+
+}
+
+async obtenerVentasAdmin(req,res){
+
+    const ventas = await Service.obtenerVentas();
+
+
+    res.render("ventas/indexAdmin",{
+
+        ventas,
+        usuario:req.session.usuario
+
+    });
 
 }
 

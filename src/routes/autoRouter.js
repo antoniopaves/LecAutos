@@ -7,28 +7,17 @@ import { esAdmin } from "../middlewares/adminMiddleware.js";
 
 const router = Router();
 
-
-// =======================
-// Usuario
-// =======================
-
 router.get(
     "/",
-    verificarSesion,
     autoController.obtenerAutos
 );
 
 
 router.get(
     "/search",
-    verificarSesion,
     autoController.buscarAuto
 );
 
-
-// =======================
-// Administrador
-// =======================
 
 router.get(
     "/admin",
@@ -36,9 +25,6 @@ router.get(
     esAdmin,
     autoController.obtenerAutosAdmin
 );
-
-
-// Crear vehículo
 
 router.get(
     "/nuevo",
@@ -55,9 +41,6 @@ router.post(
     autoController.crearAuto
 );
 
-
-// Editar vehículo
-
 router.get(
     "/editar/:id",
     verificarSesion,
@@ -73,8 +56,6 @@ router.post(
     autoController.actualizarAuto
 );
 
-
-// Eliminar vehículo
 
 router.get(
     "/eliminar/:id",
@@ -96,4 +77,11 @@ router.post(
     autoController.registrarVenta
 );
 
+router.get(
+    "/ventas/admin",
+    esAdmin,
+    autoController.obtenerVentasAdmin
+);
+
 export default router;
+
