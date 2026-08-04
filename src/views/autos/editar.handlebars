@@ -1,0 +1,125 @@
+<div class="container mt-4">
+
+    <h2>
+        Editar vehículo
+    </h2>
+
+
+    <form action="/autos/actualizar/{{auto.ID_AUTO}}" method="POST">
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Nombre
+            </label>
+
+            <input 
+            type="text"
+            class="form-control"
+            name="nombre"
+            value="{{auto.NOMBRE_AUTO}}">
+
+        </div>
+
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Marca
+            </label>
+
+            <input 
+            type="text"
+            class="form-control"
+            name="marca"
+            value="{{auto.MARCA_AUTO}}">
+
+        </div>
+
+
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Año
+            </label>
+
+            <input 
+            type="number"
+            class="form-control"
+            name="anio"
+            value="{{auto.ANIO_AUTO}}">
+
+        </div>
+
+
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Precio
+            </label>
+
+            <input 
+            type="number"
+            class="form-control"
+            name="precio"
+            value="{{auto.PRECIO_AUTO}}">
+
+        </div>
+
+
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Estado
+            </label>
+
+            <input 
+            type="text"
+            class="form-control"
+            name="estado"
+            value="{{auto.ESTADO_AUTO}}">
+
+        </div>
+
+
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Imagen
+            </label>
+
+            <input 
+            type="text"
+            class="form-control"
+            name="imagen"
+            value="{{auto.IMG_AUTO}}">
+
+        </div>
+
+
+
+
+        <button class="btn btn-primary">
+            Guardar cambios
+        </button>
+
+
+        <a href="/autos/admin" class="btn btn-secondary">
+            Cancelar
+        </a>
+
+
+    </form>
+
+
+</div>

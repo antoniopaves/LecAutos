@@ -32,11 +32,6 @@ export default class autoService {
 
     }
 
-
-    // ==========================
-    // OBTENER POR ID
-    // ==========================
-
     async obtenerAutoId(id){
 
         const auto = await this.knex
@@ -48,12 +43,6 @@ export default class autoService {
         return auto;
 
     }
-
-
-
-    // ==========================
-    // CREAR AUTO
-    // ==========================
 
     async crearAuto(auto){
 
@@ -67,7 +56,7 @@ export default class autoService {
                 ANIO_AUTO: auto.anio,
                 PRECIO_AUTO: auto.precio,
                 ESTADO_AUTO: auto.estado,
-                IMAGEN_AUTO: auto.imagen
+                IMG_AUTO: auto.imagen
 
             });
 
@@ -75,13 +64,6 @@ export default class autoService {
         return resultado;
 
     }
-
-
-
-
-    // ==========================
-    // ACTUALIZAR AUTO
-    // ==========================
 
     async actualizarAuto(id, auto){
 
@@ -96,7 +78,7 @@ export default class autoService {
                 ANIO_AUTO: auto.anio,
                 PRECIO_AUTO: auto.precio,
                 ESTADO_AUTO: auto.estado,
-                IMAGEN_AUTO: auto.imagen
+                IMG_AUTO: auto.imagen
 
             });
 
@@ -104,13 +86,6 @@ export default class autoService {
         return resultado;
 
     }
-
-
-
-
-    // ==========================
-    // ELIMINAR AUTO
-    // ==========================
 
     async eliminarAuto(id){
 

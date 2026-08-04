@@ -5,8 +5,6 @@ const Service = new autoService();
 
 class AutoController {
 
-
-    // Vista usuario
     async obtenerAutos(req, res) {
 
         const autos = await Service.obtenerAutos();
@@ -15,12 +13,8 @@ class AutoController {
             autos,
             usuario: req.session.usuario
         });
-
     }
 
-
-
-    // Vista administrador
     async obtenerAutosAdmin(req, res) {
 
         const autos = await Service.obtenerAutos();
@@ -29,12 +23,8 @@ class AutoController {
             autos,
             usuario: req.session.usuario
         });
-
     }
 
-
-
-    // Buscar
     async buscarAuto(req, res) {
 
         const { nombre } = req.query;
@@ -47,13 +37,6 @@ class AutoController {
         });
 
     }
-
-
-
-    // ==========================
-    // CREAR
-    // ==========================
-
 
     async formNuevo(req, res) {
 
@@ -84,13 +67,6 @@ class AutoController {
 
     }
 
-
-
-    // ==========================
-    // EDITAR
-    // ==========================
-
-
     async formEditar(req, res) {
 
         const { id } = req.params;
@@ -106,8 +82,6 @@ class AutoController {
 
 
     }
-
-
 
     async actualizarAuto(req, res) {
 
@@ -140,15 +114,6 @@ class AutoController {
 
     }
 
-
-
-
-
-    // ==========================
-    // ELIMINAR
-    // ==========================
-
-
     async eliminarAuto(req,res){
 
 
@@ -175,11 +140,8 @@ class AutoController {
 
         }
 
-
     }
 
-
 }
-
 
 export default new AutoController();
