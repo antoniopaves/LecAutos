@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-07-2026 a las 20:40:54
+-- Tiempo de generación: 04-08-2026 a las 15:45:50
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -32,16 +32,18 @@ CREATE TABLE `auto` (
   `NOMBRE_AUTO` varchar(50) NOT NULL,
   `ESTADO_AUTO` char(20) NOT NULL,
   `MARCA_AUTO` varchar(30) NOT NULL,
+  `ANIO_AUTO` int(11) DEFAULT NULL,
   `PRECIO_AUTO` int(11) NOT NULL,
-  `CANTIDAD_AUTO` int(11) NOT NULL
+  `CANTIDAD_AUTO` int(11) NOT NULL,
+  `IMG_AUTO` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `auto`
 --
 
-INSERT INTO `auto` (`ID_AUTO`, `NOMBRE_AUTO`, `ESTADO_AUTO`, `MARCA_AUTO`, `PRECIO_AUTO`, `CANTIDAD_AUTO`) VALUES
-(1, 'GR Yaris', 'Nuevo', 'Toyota', 6500000, 10);
+INSERT INTO `auto` (`ID_AUTO`, `NOMBRE_AUTO`, `ESTADO_AUTO`, `MARCA_AUTO`, `ANIO_AUTO`, `PRECIO_AUTO`, `CANTIDAD_AUTO`, `IMG_AUTO`) VALUES
+(1, 'GR Yaris', 'Nuevo', 'Toyota', 2026, 6500000, 10, 'toyota-yaris-gr-front-3-4-scaled.jpg');
 
 -- --------------------------------------------------------
 

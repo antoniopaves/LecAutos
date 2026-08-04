@@ -1,0 +1,128 @@
+<div class="container mt-4">
+
+    <h2>
+        Registrar vehículo
+    </h2>
+
+
+    <form action="/autos/crear" method="POST">
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Nombre del vehículo
+            </label>
+
+            <input 
+            type="text"
+            class="form-control"
+            name="nombre"
+            required>
+
+        </div>
+
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Marca
+            </label>
+
+            <input 
+            type="text"
+            class="form-control"
+            name="marca"
+            required>
+
+        </div>
+
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Año
+            </label>
+
+            <input 
+            type="number"
+            class="form-control"
+            name="anio"
+            required>
+
+        </div>
+
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Precio
+            </label>
+
+            <input 
+            type="number"
+            class="form-control"
+            name="precio"
+            required>
+
+        </div>
+
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Estado
+            </label>
+
+            <select 
+            class="form-select"
+            name="estado">
+
+                <option value="Nuevo">
+                    Nuevo
+                </option>
+
+                <option value="Usado">
+                    Usado
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <div class="mb-3">
+
+            <label class="form-label">
+                Imagen
+            </label>
+
+            <input 
+            type="text"
+            class="form-control"
+            name="imagen"
+            placeholder="nombre-imagen.jpg">
+
+        </div>
+
+
+
+
+        <button class="btn btn-success">
+            Guardar vehículo
+        </button>
+
+
+        <a href="/autos/admin" class="btn btn-secondary">
+            Cancelar
+        </a>
+
+
+    </form>
+
+</div>
