@@ -12,12 +12,10 @@ router.get(
     autoController.obtenerAutos
 );
 
-
 router.get(
-    "/search",
-    autoController.buscarAuto
+    "/buscar-api",
+    autoController.buscarAutosAPI
 );
-
 
 router.get(
     "/admin",

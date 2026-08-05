@@ -2,40 +2,32 @@ import autoService from "../services/autoService.js";
 
 const Service = new autoService();
 
+const formatearAutos = (autos) => {
+    return autos.map(auto => ({
+        ...auto,
+        PRECIO_AUTO: Number(auto.PRECIO_AUTO).toLocaleString("es-CL")
+    }));
+};
 
 class AutoController {
 
     async obtenerAutos(req, res) {
 
-    const autos = await Service.obtenerAutos();
+        const autos = formatearAutos(await Service.obtenerAutos());
 
-    console.log("USUARIO EN AUTOS:", req.session.usuario);
-
-    res.render("autos/index", {
-        autos,
-        usuario: req.session.usuario
-    });
-
-}
-
-    async obtenerAutosAdmin(req, res) {
-
-        const autos = await Service.obtenerAutos();
-
-        res.render("autos/indexAdmin", {
+        res.render("autos/index", {
             autos,
             usuario: req.session.usuario
         });
+
     }
 
-    async buscarAuto(req, res) {
+    async obtenerAutosAdmin(req, res) {
 
-        const { nombre } = req.query;
+        const autos = formatearAutos(await Service.obtenerAutos());
 
-        const autos = await Service.obtenerAutoNombre(nombre);
-
-        res.render("autos/index", {
-            autos: Array.isArray(autos) ? autos : [autos],
+        res.render("autos/indexAdmin", {
+            autos,
             usuario: req.session.usuario
         });
 
@@ -60,7 +52,7 @@ class AutoController {
             res.redirect("/autos/admin");
 
 
-        } catch(error) {
+        } catch (error) {
 
             console.log(error);
 
@@ -104,20 +96,20 @@ class AutoController {
             res.redirect("/autos/admin");
 
 
-        } catch(error) {
+        } catch (error) {
 
 
             console.log(error);
 
             res.status(500)
-            .send("Error actualizando vehículo");
+                .send("Error actualizando vehículo");
 
 
         }
 
     }
 
-    async eliminarAuto(req,res){
+    async eliminarAuto(req, res) {
 
 
         const { id } = req.params;
@@ -132,117 +124,130 @@ class AutoController {
             res.redirect("/autos/admin");
 
 
-        } catch(error){
+        } catch (error) {
 
 
             console.log(error);
 
             res.status(500)
-            .send("Error eliminando vehículo");
+                .send("Error eliminando vehículo");
 
 
         }
 
     }
 
-    async formCotizar(req,res){
+    async formCotizar(req, res) {
 
-    const {id} = req.params;
-
-
-    const auto = await Service.obtenerAutoId(id);
+        const { id } = req.params;
 
 
-    res.render("autos/cotizar",{
-
-        auto,
-        usuario:req.session.usuario
-
-    });
-
-}
-
-async formCotizar(req,res){
-
-    const {id} = req.params;
-
-    const auto = await Service.obtenerAutoId(id);
+        const auto = await Service.obtenerAutoId(id);
 
 
-    res.render("autos/cotizar",{
-        auto,
-        usuario:req.session.usuario
-    });
+        res.render("autos/cotizar", {
 
-}
-
-
-async registrarVenta(req,res){
-
-    try {
-
-        const {
-            idAuto
-        } = req.body;
-
-
-        const auto = await Service.obtenerAutoId(idAuto);
-
-
-        const precio = auto.PRECIO_AUTO;
-
-
-        const iva = precio * 0.19;
-
-
-        const total = precio + iva;
-
-
-
-        await Service.registrarVenta({
-
-            idUsuario:req.session.usuario.id,
-
-            idAuto:idAuto,
-
-            precioTotal:total,
-
-            iva:iva
+            auto,
+            usuario: req.session.usuario
 
         });
-
-
-
-        res.render("autos/confirmacion",{
-
-            usuario:req.session.usuario
-
-        });
-
-
-
-    } catch(error){
-
-        console.log(error);
-
-        res.status(500)
-        .send("Error registrando venta");
 
     }
 
-}
+    async registrarVenta(req, res) {
 
-async obtenerVentasAdmin(req,res){
+        try {
 
-    const ventas = await Service.obtenerVentas();
+            const {
+                idAuto
+            } = req.body;
 
 
-    res.render("ventas/indexAdmin",{
+            const auto = await Service.obtenerAutoId(idAuto);
 
-        ventas,
-        usuario:req.session.usuario
 
-    });
+            const precio = auto.PRECIO_AUTO;
+
+
+            const iva = precio * 0.19;
+
+
+            const total = precio + iva;
+
+
+
+            await Service.registrarVenta({
+
+                idUsuario: req.session.usuario.id,
+
+                idAuto: idAuto,
+
+                precioTotal: total,
+
+                iva: iva
+
+            });
+
+
+
+            res.render("autos/confirmacion", {
+
+                usuario: req.session.usuario
+
+            });
+
+
+
+        } catch (error) {
+
+            console.log(error);
+
+            res.status(500)
+                .send("Error registrando venta");
+
+        }
+
+    }
+
+    async obtenerVentasAdmin(req, res) {
+
+        const ventas = await Service.obtenerVentas();
+
+
+        res.render("ventas/indexAdmin", {
+
+            ventas,
+            usuario: req.session.usuario
+
+        });
+
+    }
+
+    async buscarAutosAPI(req, res) {
+
+    try {
+
+        const { texto } = req.query;
+
+
+        const autos = await Service.buscarAutosFetch(texto);
+
+
+        res.json({
+            autos,
+            usuario: req.session.usuario
+        });
+
+
+    } catch(error) {
+
+        console.log(error);
+
+        res.status(500).json({
+            mensaje: "Error buscando autos"
+        });
+
+    }
 
 }
 

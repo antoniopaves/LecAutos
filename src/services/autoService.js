@@ -145,6 +145,20 @@ async obtenerVentas(){
 
     return ventas;
 
+    
+}
+
+async buscarAutosFetch(texto) {
+
+    const autos = await this.knex
+        .select("*")
+        .from("auto")
+        .where("NOMBRE_AUTO", "like", `%${texto}%`)
+        .orWhere("MARCA_AUTO", "like", `%${texto}%`);
+
+
+    return autos;
+
 }
 
 }

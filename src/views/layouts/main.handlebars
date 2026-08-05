@@ -130,19 +130,13 @@
 
 
 
+                <form class="d-flex ms-3" id="formBuscar">
 
-                <form class="d-flex ms-3" action="/autos/search" method="GET">
+                    <input id="buscarAuto" class="form-control" type="search" placeholder="Buscar auto...">
 
-
-                    <input class="form-control" type="search" name="nombre" placeholder="Buscar auto..." required>
-
-
-                    <button class="btn btn-primary">
-
+                    <button class="btn btn-primary" type="submit">
                         Buscar
-
                     </button>
-
 
                 </form>
 
@@ -163,10 +157,9 @@
     </div>
 
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
     </script>
-
+    <script src="/public/js/buscarAutos.js"></script>
 
 </body>
 
