@@ -238,6 +238,7 @@ class AutoController {
             usuario: req.session.usuario
         });
 
+        console.log({autos, usuario: req.session.usuario });
 
     } catch(error) {
 
